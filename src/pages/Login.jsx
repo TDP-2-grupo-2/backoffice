@@ -4,18 +4,52 @@ import {Grid, Box, Typography, TextField, IconButton, InputAdornment, Button} fr
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import EmailIcon from '@mui/icons-material/Email';
 import { useState } from 'react';
+import {Notification} from '../components/Notification'
 
 export const Login = (props) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
-    const [showErrorLogin, setShowErrorLogin] = useState(false);
-    const [errorLogin, setErrorLogin] = useState('');
+    const [notify, setNotify] = useState({isOpen: false, message: '', type: ''})
  
 
     const handleLogIn = async (event) => {
-       props.setAuthentification(true)
+        const APIURL = 'https://event-service-solfonte.cloud.okteto.net'
+        const paramsLogin = {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password,
+            })
+        };
+        const url = `${APIURL}/admins/login`;
+        const response = await fetch(
+            url,
+            paramsLogin
+        );
+        const jsonResponse = await response.json();
+        
+        if (response.status === 200){ 
+            props.setAuthentification(true)
+        } else {
+            if (response.status == 401){
+                setNotify({
+                    isOpen: true,
+                    message: 'contraseña/email invalido',
+                    type: 'error'
+                })
+            } else {
+                setNotify({
+                    isOpen: true,
+                    message: 'Error en el login. Intente mas tarde',
+                    type: 'error'
+                })
+            }
+        }
     }
 
     const toggleSeePassword = (event) => {
@@ -114,6 +148,9 @@ export const Login = (props) => {
                             onClick={handleLogIn}>
                         Log In
                     </Button>
+                    <Notification
+                        notify={notify}
+                        setNotify={setNotify}/>
                     </Grid>
                 </Grid>
             </Box>
