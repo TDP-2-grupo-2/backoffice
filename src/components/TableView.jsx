@@ -30,35 +30,49 @@ export const TableView = (props) => {
         <>
             <TableContainer>
             <Table>
-                <TableHead>
-                <TableRow>
+                <TableHead >
+                <TableRow style={{backgroundColor:'white', color: 'black',}} align="center">
                     {props.columns.map(element => {
                         return(
-                            <TableCell> {element} </TableCell>
+                            <TableCell align="center"> {element} </TableCell>
                         )   
                     })}
-                    <TableCell>Action</TableCell>
                 </TableRow>
                 </TableHead>
                 <TableBody>
                 {props.tableInfo.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => (
-                    <TableRow key={row.id}>
+                    <TableRow style={{backgroundColor:'rgba(217, 217, 217, 1)', color: 'black',}} key={row.id} align="center">
                         {props.infoToShow.map(info => {
                             return (
                                 <>
-                                    <TableCell> {row[info]}</TableCell>
+                                    <TableCell align="center"> {row[info]}</TableCell>
                                 </>
                                 
                         )})}
-                        <TableCell>
-                            <Button variant="contained" onClick={() => handleClick(row.id)}>Click me</Button>
-                        </TableCell>
+                        {props.isEvent == true &&
+                            <>
+                                <TableCell>
+                                    <Button sx={{ color: 'white', backgroundColor: 'rgba(129, 174, 181, 1)'}}
+                                            variant="contained" 
+                                            onClick={() => handleClick(row.id)}>
+                                                Bloquear
+                                    </Button>
+                                </TableCell>
+                                <TableCell>
+                                    <Button sx={{ color: 'white', backgroundColor: 'rgba(129, 174, 181, 1)' }}
+                                            variant="contained" 
+                                            onClick={() => handleClick(row.id)}>
+                                                Bloquear
+                                    </Button>
+                            </TableCell>
+                            </>
+                        }
                     </TableRow>
                 ))}
                 </TableBody>
             </Table>
             </TableContainer>
-            <TablePagination
+            <TablePagination style={{backgroundColor:'rgba(217, 217, 217, 1)', color: 'black',}}
                 rowsPerPageOptions={[5, 10, 25]}
                 component="div"
                 count={props.tableInfo.length}

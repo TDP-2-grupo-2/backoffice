@@ -67,7 +67,7 @@ const tableData = [
 
 
 export const Events= () =>{
-    let columns = ["Evento", "Descripcion", "Dueño", "Cantidad de Denuncias", "Motivo Principal"]
+    let columns = ["Evento", "Descripcion", "Dueño", "Cantidad de Denuncias", "Motivo Principal", "Suspender Evento", "Suspender Organizador"]
     let information = ["eventName", "eventDescription", "ownerName", "amount_report", "motive"]
     return (
         <>
@@ -80,6 +80,7 @@ export const Events= () =>{
                 columns={columns}
                 infoToShow={information}
                 tableInfo={tableData}
+                isEvent={true}
             />    
            
         </>
