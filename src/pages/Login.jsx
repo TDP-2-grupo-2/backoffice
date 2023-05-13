@@ -32,9 +32,10 @@ export const Login = (props) => {
             paramsLogin
         );
         const jsonResponse = await response.json();
-        
+        console.log(jsonResponse['message'])
         if (response.status === 200){ 
             props.setAuthentification(true)
+            localStorage.setItem("token", jsonResponse['message'])
         } else {
             if (response.status == 401){
                 setNotify({
