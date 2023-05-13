@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TablePagination } from '@mui/material';
-
+import { Notification } from './Notification';
 
 
 export const TableView = (props) => {
     console.log(props.columns)
     console.log(props.infoToShow)
     console.log(props.tableInfo)
+    const [notifyBlockEvent, setNotifyBlockEvent] = useState({isOpen: false, message: '', type: ''})
+    const [notifyBlockOrganizer, setNotifyBlockOrganizer] = useState({isOpen: false, message: '', type: ''})
+    const APIURL = 'https://event-service-solfonte.cloud.okteto.net'
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
@@ -19,6 +22,62 @@ export const TableView = (props) => {
         setRowsPerPage(parseInt(event.target.value, 10));
         setPage(0);
       };
+    
+
+    const hanldeBlockOrganizer = async (organizerId) => {
+        let token = localStorage.getItem('token');
+        const paramsUpload = {
+            method: "PATCH",
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            }
+        };
+        const url = `${APIURL}/admins/suspended_organizers/${organizerId}`;
+        const response = await fetch(
+            url,
+            paramsUpload
+        );
+        const jsonResponse = await response.json();
+    
+        if (response.status === 200){
+            if(!jsonResponse.status_code){
+                console.log(jsonResponse)
+                setNotifyBlockOrganizer({isOpen: true, message: 'El organizador ha sido bloqueado exitosamente', type: 'success'})    
+            }
+        } else {
+            setNotifyBlockOrganizer({isOpen: true, message: 'Ha ocurrido un error al bloquear un organizador', type: 'error'})
+        }     
+    }
+
+    const handleBlockEvent = async (eventId) => {
+        let token = localStorage.getItem('token');
+        const paramsUpload = {
+            method: "PATCH",
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            }
+        };
+        const url = `${APIURL}/admins/suspended_events/${eventId}`;
+        const response = await fetch(
+            url,
+            paramsUpload
+        );
+        const jsonResponse = await response.json();
+    
+        if (response.status === 200){
+            if(!jsonResponse.status_code){
+                console.log(jsonResponse)
+                setNotifyBlockEvent({isOpen: true, message: 'El evento ha sido bloqueado exitosamente', type: 'success'})
+                
+            }
+        } else {
+            console.log("entre a handler error")
+            setNotifyBlockEvent({isOpen: true, message: 'Ha ocurrido un error al bloquear un evento', type: 'error'})
+        }     
+
+    }
     
     function handleClick(id) {
       // Define the logic for handling the button click here
@@ -54,7 +113,7 @@ export const TableView = (props) => {
                                 <TableCell>
                                     <Button sx={{ color: 'white', backgroundColor: 'rgba(129, 174, 181, 1)'}}
                                             variant="contained" 
-                                            onClick={() => handleClick(row.id)}>
+                                            onClick={() => handleBlockEvent(row.id)}>
                                                 Bloquear
                                     </Button>
                                 </TableCell>
@@ -81,6 +140,12 @@ export const TableView = (props) => {
                 onPageChange={handleChangePage}
                 onRowsPerPageChange={handleChangeRowsPerPage}
         />
+        <Notification
+                        notify={notifyBlockEvent}
+                        setNotify={setNotifyBlockEvent}/>
+        <Notification
+                        notify={notifyBlockOrganizer}
+                        setNotify={setNotifyBlockOrganizer}/>
     
         </>
   );

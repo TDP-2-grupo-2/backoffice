@@ -7,7 +7,7 @@ import { DateFilter } from "../components/DateFilter";
 
 const tableData = [
     {
-      eventId: 1,
+      id: 1,
       eventName: 'Maestros de Fuego',
       eventDescription: 'una descripcion',
       ownerName: 'pepe',
@@ -15,7 +15,7 @@ const tableData = [
       motive: 'spam'
     },
     {
-      eventId: 2,
+      id: 2,
       eventName: 'danza',
       eventDescription: 'una descripcion',
       ownerName: 'pepe',
@@ -23,7 +23,7 @@ const tableData = [
       motive: 'spam'
     },
     {
-      eventId: 4,
+      id: 4,
       eventName: 'Cazzu show',
       eventDescription: 'una descripcion',
       ownerName: 'pepe3',
@@ -31,7 +31,7 @@ const tableData = [
       motive: 'spam'
     },
     {
-      eventId: 5,
+      id: 5,
       eventName: 'microTeatro',
       eventDescription: 'una descripcion',
       ownerName: 'pepe',
@@ -39,7 +39,7 @@ const tableData = [
       motive: 'spam'
     },
     {
-      eventId: 5,
+      id: 5,
       eventName: 'Maestros de Fuego2',
       eventDescription: 'una descripcion',
       ownerName: 'pepe',
@@ -47,7 +47,7 @@ const tableData = [
       motive: 'spam'
     },
     {
-      eventId: 6,
+      id: 6,
       eventName: 'ejemplo 2',
       eventDescription: 'una descripcion',
       ownerName: 'pepe',
@@ -55,7 +55,7 @@ const tableData = [
       motive: 'spam'
     },
     {
-      eventId: 7,
+      id: 7,
       eventName: 'otro',
       eventDescription: 'una descripcion',
       ownerName: 'pepe2',
