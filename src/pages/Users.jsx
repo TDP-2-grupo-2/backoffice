@@ -1,7 +1,7 @@
-import React from "react"
+import React, { useState } from "react"
 import { Typography } from "@mui/material"
 import {TableView} from "../components/TableView"
-
+import { DateFilter } from "../components/DateFilter";
 
 
 const tableData = [
@@ -62,11 +62,21 @@ const tableData = [
 export const Users= () =>{
     let columns = ["Usuario", "Email", "Cantidad de Denuncias", "Motivo Principal"]
     let information = ["userName", "userEmail", "amount_report", "motive"]
+    const [from, setFrom] = useState(null)
+    const [until, setUntil] = useState(null)
     return (
         <>
             <Typography  variant="h3" align="top">
                 Usuarios Denunciantes
             </Typography>
+            <br></br>
+            <br></br>
+            <DateFilter
+                from = {from}
+                until = {until}
+                setFrom = {setFrom}
+                setUntil = {setUntil}
+            />
             <br></br>
             <br></br>
             <TableView 

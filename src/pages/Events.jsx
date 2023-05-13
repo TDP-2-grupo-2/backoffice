@@ -1,6 +1,7 @@
-import React from "react"
+import React, { useState } from "react"
 import { Typography } from "@mui/material"
 import {TableView} from "../components/TableView"
+import { DateFilter } from "../components/DateFilter";
 
 
 
@@ -69,6 +70,8 @@ const tableData = [
 export const Events= () =>{
     let columns = ["Evento", "Descripcion", "Dueño", "Cantidad de Denuncias", "Motivo Principal", "Suspender Evento", "Suspender Organizador"]
     let information = ["eventName", "eventDescription", "ownerName", "amount_report", "motive"]
+    const [from, setFrom] = useState(null)
+    const [until, setUntil] = useState(null)
     return (
         <>
             <Typography  variant="h3" align="top">
@@ -76,6 +79,15 @@ export const Events= () =>{
             </Typography>
             <br></br>
             <br></br>
+            <DateFilter
+                from = {from}
+                until = {until}
+                setFrom = {setFrom}
+                setUntil = {setUntil}
+            />
+            <br></br>
+            <br></br>
+        
             <TableView 
                 columns={columns}
                 infoToShow={information}
