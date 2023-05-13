@@ -111,12 +111,12 @@ export const Sidebar = () => {
 
     return (
         <Box sx={{ display: 'flex' }}>
-            <style>{'body { background-color: rgba(137,152,202,255); }'}</style>
+            <style>{'body { background-color: rgba(129, 174, 181, 1); }'}</style>
             <CssBaseline />
             <AppBar elevation={0} position="fixed" open={isOpen} currentPageTitle={currentPageTitle}  style={{ background: 'transparent' }}>
                 <Toolbar>
                     {!isOpen? <IconButton
-                        color="rgba(137,152,202,255)"
+                        color="rgba(129, 174, 181, 1)"
                         aria-label="open drawer"
                         onClick={handleSidebarOpen}
                         edge="start"
@@ -137,7 +137,7 @@ export const Sidebar = () => {
                     '& .MuiDrawer-paper': {
                     width: drawerWidth,
                     boxSizing: 'border-box',
-                    background: 'rgba(112, 92, 156)'
+                    background: 'rgba(30, 152, 159, 0.49)'
                     },
                 }}
                 variant="persistent"
@@ -173,7 +173,7 @@ export const Sidebar = () => {
                 </List>
             </Drawer>
 
-            <Main open={isOpen} style={{background: 'rgba(137,152,202,255)'}} renderComponent={renderComponent}>
+            <Main open={isOpen} style={{background: 'rgba(129, 174, 181, 1)'}} renderComponent={renderComponent}>
             <DrawerHeader/>
                {componentToRender == 0 ? <Users/>: <></>}
                {componentToRender == 1 ? <Events/>: <></>}
