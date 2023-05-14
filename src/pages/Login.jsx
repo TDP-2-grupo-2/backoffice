@@ -40,7 +40,7 @@ export const Login = (props) => {
             if (response.status == 401){
                 setNotify({
                     isOpen: true,
-                    message: 'contraseña/email invalido',
+                    message: jsonResponse['detail'],
                     type: 'error'
                 })
             } else {

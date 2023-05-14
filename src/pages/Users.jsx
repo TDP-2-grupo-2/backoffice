@@ -5,25 +5,21 @@ import { DateFilter } from "../components/DateFilter";
 
 
 
-  
-
-
 export const Users= () =>{
     let columns = ["Usuario", "Email", "Cantidad de Denuncias", "Motivo Principal"]
-    let information = ["userName", "userEmail", "amount_report", "motive"]
+    let information = ["user_name", "user_email", "amount_of_reports", "most_frecuent_reason"]
     const [ loading, setLoading ] = useState( true );
     const APIURL = 'https://event-service-solfonte.cloud.okteto.net'
-
+    const [dateFilter, setDateFilter] = useState({fromDate:null, toDate:null})
 
     const [attendes, setAttendes] = useState([])
-    const [from, setFrom] = useState(null)
-    const [until, setUntil] = useState(null)
+  
+    const [change, setChange] = useState("")
 
-    const handleRequest = () => {
 
-    }
-
-    async function getReportAttendes(token, from, until){
+    async function getReportAttendes(token, dateFilter){
+      console.log(dateFilter)
+      console.log("pido a los attendes que reportaron")
       const paramsUpload = {
           method: "GET",
           headers: {
@@ -33,14 +29,18 @@ export const Users= () =>{
       };
       let url = ""
       console.log(token)
-      if (from !== null && until !== null){
-           url = `${APIURL}/admins/reports/attendees?from_date=${from}&to_date=${until}`;
-      } else if ( from !== null){
-        url = `${APIURL}/admins/reports/attendees?from_date=${from}`;
-      } else if (until !== null){
-        url = `${APIURL}/admins/reports/attendees?to_date=${until}`;
+      if (dateFilter.fromDate !== null && dateFilter.toDate!== null){
+          console.log("mando from y until")
+          url = `${APIURL}/admins/reports/attendees?from_date=${dateFilter.fromDate}&to_date=${dateFilter.toDate}`;
+      } else if ( dateFilter.fromDate!== null){
+          console.log("mando from")
+          url = `${APIURL}/admins/reports/attendees?from_date=${dateFilter.fromDate}`;
+      } else if (dateFilter.toDate !== null){
+          console.log("mando until")
+          url = `${APIURL}/admins/reports/attendees?to_date=${dateFilter.toDate}`;
       } else {
-        url = `${APIURL}/admins/reports/attendees`;
+          console.log("no mando un carajo from y until")
+          url = `${APIURL}/admins/reports/attendees`;
       }
       const response = await fetch(
           url,
@@ -50,6 +50,7 @@ export const Users= () =>{
   
       if (response.status === 200){
           if(!jsonResponse.status_code){
+              console.log("usuarios denunciantes")
               console.log(jsonResponse)
               setAttendes(jsonResponse['message'])
               setLoading(false)
@@ -58,8 +59,8 @@ export const Users= () =>{
   }
   
   useEffect( () => {
-    getReportAttendes(localStorage.getItem('token'), null, null);
-  }, []);
+    getReportAttendes(localStorage.getItem('token'), dateFilter);
+  }, [dateFilter]);
   
 
     return (
@@ -71,11 +72,8 @@ export const Users= () =>{
                 <br></br>
                 <br></br>
                 <DateFilter
-                    from = {from}
-                    until = {until}
-                    setFrom = {setFrom}
-                    setUntil = {setUntil}
-                    handleRequest = {handleRequest}
+                    dateFilter={dateFilter}
+                    setDateFilter={setDateFilter}
                 />
                 <br></br>
                 <br></br>

@@ -4,9 +4,7 @@ import { Notification } from './Notification';
 
 
 export const TableView = (props) => {
-    console.log(props.columns)
-    console.log(props.infoToShow)
-    console.log(props.tableInfo)
+    
     const [notifyBlockEvent, setNotifyBlockEvent] = useState({isOpen: false, message: '', type: ''})
     const [notifyBlockOrganizer, setNotifyBlockOrganizer] = useState({isOpen: false, message: '', type: ''})
     const APIURL = 'https://event-service-solfonte.cloud.okteto.net'
