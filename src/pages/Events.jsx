@@ -49,7 +49,9 @@ export const Events= () =>{
           if(!jsonResponse.status_code){
               console.log("eventos denunciados")
               console.log(jsonResponse)
-              setEvents(jsonResponse['message'])
+              let aux = jsonResponse['message']
+              let filter_events = aux.filter((x) => x.amount_of_reports > 0);
+              setEvents(filter_events);
               setLoading(false)
           }
       }     
