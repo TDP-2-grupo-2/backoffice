@@ -11,12 +11,10 @@ export const Users= () =>{
     const [ loading, setLoading ] = useState( true );
     const APIURL = 'https://event-service-solfonte.cloud.okteto.net'
     const [dateFilter, setDateFilter] = useState({fromDate:null, toDate:null})
+    const [change, setChange] = useState("");
 
     const [attendes, setAttendes] = useState([])
-  
-    const [change, setChange] = useState("")
-
-
+    
     async function getReportAttendes(token, dateFilter){
       console.log(dateFilter)
       console.log("pido a los attendes que reportaron")
@@ -60,8 +58,7 @@ export const Users= () =>{
   
   useEffect( () => {
     getReportAttendes(localStorage.getItem('token'), dateFilter);
-  }, [dateFilter]);
-  
+  }, [dateFilter, change]);
 
     return (
             !loading ?
@@ -83,6 +80,7 @@ export const Users= () =>{
                         infoToShow={information}
                         tableInfo={attendes}
                         isEvent={false}
+                        setChange={setChange}
                     />
                   :  <h2 style={{marginTop:"3rem", textAlign:"center"}}>No hay usuarios denunciantes.</h2>    
                 }

@@ -41,7 +41,8 @@ export const TableView = (props) => {
         if (response.status === 200){
             if(!jsonResponse.status_code){
                 console.log(jsonResponse)
-                setNotifyBlockOrganizer({isOpen: true, message: 'El organizador ha sido bloqueado exitosamente', type: 'success'})    
+                setNotifyBlockOrganizer({isOpen: true, message: 'El organizador ha sido bloqueado exitosamente', type: 'success'})
+                props.setChange("bloquear organizros")    
             }
         } else {
             setNotifyBlockOrganizer({isOpen: true, message: 'Ha ocurrido un error al bloquear un organizador', type: 'error'})
@@ -57,6 +58,7 @@ export const TableView = (props) => {
                 'Content-Type': 'application/json',
             }
         };
+        console.log(eventId)
         const url = `${APIURL}/admins/suspended_events/${eventId}`;
         const response = await fetch(
             url,
@@ -68,6 +70,7 @@ export const TableView = (props) => {
             if(!jsonResponse.status_code){
                 console.log(jsonResponse)
                 setNotifyBlockEvent({isOpen: true, message: 'El evento ha sido bloqueado exitosamente', type: 'success'})
+                props.setChange("bloquear eventos")
                 
             }
         } else {
@@ -118,7 +121,7 @@ export const TableView = (props) => {
                                 <TableCell>
                                     <Button sx={{ color: 'white', backgroundColor: 'rgba(129, 174, 181, 1)' }}
                                             variant="contained" 
-                                            onClick={() => handleClick(row.id)}>
+                                            onClick={() => hanldeBlockOrganizer(row.organizer_id)}>
                                                 Bloquear
                                     </Button>
                             </TableCell>
