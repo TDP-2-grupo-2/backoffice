@@ -114,7 +114,7 @@ export const TableView = (props) => {
                                 <TableCell>
                                     <Button sx={{ color: 'white', backgroundColor: 'rgba(129, 174, 181, 1)'}}
                                             variant="contained" 
-                                            onClick={() => handleBlockEvent(row.id)}>
+                                            onClick={() => handleBlockEvent(row.event_id)}>
                                                 Bloquear
                                     </Button>
                                 </TableCell>
