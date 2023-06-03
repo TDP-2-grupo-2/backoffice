@@ -3,6 +3,7 @@ import { Grid } from "@mui/material";
 import { EventStatus } from "./EventStatus";
 import { AcredditedMetrics } from "./AcredditedMetrics";
 import { TopOrganicers } from "./TopOrganicers";
+import { AmountEvent } from "./AmountEvents";
 
 export const dataEstadoEventos = [
     ["Tipo de Eventos", "Cantidad"],
@@ -28,6 +29,15 @@ export const dataEstadoEventos = [
     {'name': 'pedro', 'amount': 15},
     {'name': 'emilia', 'amount': 10}
 ]
+
+export const dataTimeEvent = [
+    ["Tiempo", "Cantidad de Eventos"],
+    ["Abr", 3],
+    ["May", 5],
+    ['Jun', 1],
+    ['Jul', 3],
+    ["Ago", 3]
+]
   
 
 
@@ -38,20 +48,25 @@ export const EventsMetrics = (props) => {
                 <Grid container  display="flex" justifyContent="space-between" alignItems="center" rowSpacing={3}>
 
                     
-                    <Grid item xs={6}>
+                    <Grid item xs={7}>
                         <AcredditedMetrics
                             data={dataAcredidatos}
                         />
                     </Grid>
-                    <Grid item xs={5}>
+                    <Grid item xs={4}>
                         <TopOrganicers
                             data={dataOrganicers}
                         />
 
                     </Grid>
-                    <Grid item xs={5.5}>
+                    <Grid item xs={5}>
                         <EventStatus
                             data={dataEstadoEventos}
+                        />
+                    </Grid>
+                    <Grid item xs={6}>
+                        <AmountEvent
+                            data={dataTimeEvent}
                         />
                     </Grid>
 

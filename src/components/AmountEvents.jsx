@@ -1,14 +1,13 @@
 import React, { useState } from "react"
 import { Grid, Typography } from "@mui/material";
 import { MetricsChart } from "./MetricsChart";
-import { FilterMetrics } from "./FilterMetrics";
 
 export const options = {
+    is3D: true,
     backgroundColor: 'transparent',
-    legend: {'position':'bottom','alignment':'center'},
-    colors: ['#64B5F6'],
+    legend: { position: "bottom" },
     hAxis: {
-        title: "Año",
+        title: "Tiempo",
         textStyle: {
             fontSize: 15,
             color: '#000000',
@@ -21,9 +20,9 @@ export const options = {
             bold: true,
             italic: false
           }
-    },
-    vAxis: {
-        title: "Acreditados",
+      },
+      vAxis: {
+        title: "Cantidad",
         textStyle: {
             fontSize: 15,
             color: '#000000',
@@ -36,36 +35,26 @@ export const options = {
             bold: true,
             italic: false
           }
-    },
+      },
     width:"100%",
-    height:300,
+    height:"120%",
   };
 
 
-
-export const AcredditedMetrics = (props) => {
-    console.log(props.data)
-    const [statusInfo, setStatusInfo] = useState({'data': props.data, 'options': options, type:'ColumnChart'})
-    const [filters, setFilters] = useState({'since': null, 'type': "Años"})
+export const AmountEvent = (props) => {
+    const [statusInfo, setStatusInfo] = useState({'data': props.data, 'options': options, type:'LineChart'})
     return (
         <>
         <Grid container style={{background: "rgba(70, 78, 95, 0.35)"}} >
             <Grid item xs={12} style={{ display: "flex", justifyContent: "center" }}>
                 <Typography  variant="h4" align="center" fontWeight= 'bold'>
-                    Cantidad de Acreditados
+                    Cantidad de Eventos
                 </Typography>
             </Grid>
-            <Grid xs={8} >
+            <Grid item xs={12} style={{ display: "flex", justifyContent: "center" }}>
                 <MetricsChart
                     info={statusInfo}
                 />
-            </Grid>
-            <Grid xs={3}>
-                <FilterMetrics
-                    filters={filters}
-                    setFilters={setFilters}
-                />
-
             </Grid>
 
             
