@@ -5,8 +5,8 @@ import { Notification } from './Notification';
 
 export const TableView = (props) => {
     
-    const [notifyBlockEvent, setNotifyBlockEvent] = useState({isOpen: false, message: '', type: ''})
-    const [notifyBlockOrganizer, setNotifyBlockOrganizer] = useState({isOpen: false, message: '', type: ''})
+    const [notifyBlockEvent, setNotifyBlockEvent] = useState({isOpen: false, message: '', type: 'info'})
+    const [notifyBlockOrganizer, setNotifyBlockOrganizer] = useState({isOpen: false, message: '', type: 'info'})
     const APIURL = 'https://event-service-solfonte.cloud.okteto.net'
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
@@ -140,7 +140,7 @@ export const TableView = (props) => {
                                 </>
                                 
                         )})}
-                        {props.isEvent == true &&
+                        {props.isEvent === true &&
                             <>
                                 <TableCell>
                                     <Button sx={{ color: 'white', backgroundColor: 'rgba(129, 174, 181, 1)'}}
