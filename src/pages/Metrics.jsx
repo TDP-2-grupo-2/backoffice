@@ -4,20 +4,10 @@ import { Typography, Box} from "@mui/material";
 import { TabPanel } from "../components/TabPanel";
 import { TabHeader } from "../components/TabHeader";
 import { EventsMetrics } from "../components/EventsMetrics";
+import { ReportsMetrics } from "../components/ReportsMetrics";
 
-export const data = [
-    ["Task", "Hours per Day"],
-    ["Work", 11],
-    ["Eat", 2],
-    ["Commute", 2],
-    ["Watch TV", 2],
-    ["Sleep", 7],
-  ];
   
-  export const options = {
-    title: "My Daily Activities",
-    is3D: true,
-  };
+
 
 TabPanel.propTypes = {
     children: PropTypes.node,
@@ -28,7 +18,6 @@ TabPanel.propTypes = {
 export const Metrics = () =>{
   
     const [tabValue, setTabValue] = useState(0);
-
 
     return (
         <>
@@ -45,7 +34,7 @@ export const Metrics = () =>{
                     <EventsMetrics/>
                 </TabPanel>
                 <TabPanel value={tabValue} index={1}>
-                    Denuncias
+                    <ReportsMetrics/>
                 </TabPanel>
             </Box>
 
