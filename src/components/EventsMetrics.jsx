@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Box } from "@mui/material";
+import { Grid } from "@mui/material";
 import { EventStatus } from "./EventStatus";
 import { AcredditedMetrics } from "./AcredditedMetrics";
 
@@ -26,16 +26,21 @@ export const EventsMetrics = (props) => {
    
     return (
             <>
-                <Box display="flex" justifyContent="space-between" alignItems="center">
-                    <EventStatus
-                        data={dataEstadoEventos}
-                    />
+                <Grid container  display="flex" justifyContent="space-between" alignItems="center">
+                    
+                    <Grid xs={5.5}>
+                        <EventStatus
+                            data={dataEstadoEventos}
+                        />
+                    </Grid>
+                    <Grid xs={5.5}>
+                        <AcredditedMetrics
+                            data={dataAcredidatos}
+                        />
+                    </Grid>
 
-                    <AcredditedMetrics
-                        data={dataAcredidatos}
-                    />
 
-                </Box>
+                </Grid>
 
             </>
     );
