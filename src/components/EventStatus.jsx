@@ -7,9 +7,9 @@ export const options = {
     backgroundColor: 'transparent',
     legend: {'position':'bottom','alignment':'center', maxLines: 5},
     colors: ['#2F686F', '#63899E', '#5AB0C7', '#33A9C4', '#48E9F1'],
-    chartArea: {top:50,bottom:30,right:0,left:50, 'width': '100%' },
-    width:600,
-    height:300,
+    chartArea: {'width': '40vw' },
+    width:"40vw",
+    height:"20vw",
   };
 
 
@@ -20,7 +20,7 @@ export const EventStatus = (props) => {
         <Grid container style={{background: "rgba(70, 78, 95, 0.35)"}} >
             <Grid item xs={12} style={{ display: "flex", justifyContent: "center" }}>
                 <Typography  variant="h4" align="center" fontWeight= 'bold'>
-                    Tipo de Eventos
+                    Estado de Eventos
                 </Typography>
             </Grid>
             <Grid item xs={12} style={{ display: "flex", justifyContent: "center" }}>

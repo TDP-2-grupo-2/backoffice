@@ -36,8 +36,8 @@ export const options = {
             italic: false
           }
       },
-    width:"100%",
-    height:"120%",
+      width:"45vw",
+      height:"20vw",
   };
 
 
@@ -51,7 +51,7 @@ export const AmountEvent = (props) => {
                     Cantidad de Eventos
                 </Typography>
             </Grid>
-            <Grid item xs={12} style={{ display: "flex", justifyContent: "center" }}>
+            <Grid item xs={12} style={{ display: "flex", justifyContent: "start" }}>
                 <MetricsChart
                     info={statusInfo}
                 />

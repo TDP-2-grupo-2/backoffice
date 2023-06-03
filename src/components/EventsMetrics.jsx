@@ -32,10 +32,10 @@ export const dataEstadoEventos = [
 
 export const dataTimeEvent = [
     ["Tiempo", "Cantidad de Eventos"],
-    ["Abr", 3],
+    ["Abr", 10],
     ["May", 5],
     ['Jun', 1],
-    ['Jul', 3],
+    ['Jul', 8],
     ["Ago", 3]
 ]
   

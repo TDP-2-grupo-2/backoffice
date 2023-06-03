@@ -37,8 +37,8 @@ export const options = {
             italic: false
           }
     },
-    width:"100%",
-    height:300,
+    width:"38vw",
+    height:"20vw",
   };
 
 
@@ -49,18 +49,18 @@ export const AcredditedMetrics = (props) => {
     const [filters, setFilters] = useState({'since': null, 'type': "Años"})
     return (
         <>
-        <Grid container style={{background: "rgba(70, 78, 95, 0.35)"}} >
-            <Grid item xs={12} style={{ display: "flex", justifyContent: "center" }}>
+        <Grid container style={{background: "rgba(70, 78, 95, 0.35)"}}  justifyContent="space-evenly" alignItems="center">
+            <Grid item xs={12} style={{ display: "flex", justifyContent: "center" }} >
                 <Typography  variant="h4" align="center" fontWeight= 'bold'>
                     Cantidad de Acreditados
                 </Typography>
             </Grid>
-            <Grid xs={8} >
+            <Grid xs={8}>
                 <MetricsChart
                     info={statusInfo}
                 />
             </Grid>
-            <Grid xs={3}>
+            <Grid xs={3} >
                 <FilterMetrics
                     filters={filters}
                     setFilters={setFilters}

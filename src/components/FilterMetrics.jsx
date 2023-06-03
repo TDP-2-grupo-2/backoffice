@@ -21,7 +21,7 @@ export const FilterMetrics = (props) => {
         
         <Grid container spacing={2} display="flex" justifyContent="space-between" alignItems="center">
             <Grid style={{ display: "flex", justifyContent: "center" }} xs={12}>
-                <Typography  variant="h4" align="center">
+                <Typography  variant="h4" align="center" color="#FFFFFF">
                     Filtros
                 </Typography>        
             </Grid>
