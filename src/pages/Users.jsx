@@ -63,7 +63,7 @@ export const Users= () =>{
     return (
             !loading ?
             <div className="reportedAttendes">
-                <Typography  variant="h3" align="top">
+                <Typography  variant="h3" align="left">
                     Usuarios Denunciantes
                 </Typography>
                 <br></br>
