@@ -1,7 +1,8 @@
-import React, { useState } from "react"
+import React from "react"
 import { Grid } from "@mui/material";
 import { EventStatus } from "./EventStatus";
 import { AcredditedMetrics } from "./AcredditedMetrics";
+import { TopOrganicers } from "./TopOrganicers";
 
 export const dataEstadoEventos = [
     ["Tipo de Eventos", "Cantidad"],
@@ -19,6 +20,14 @@ export const dataEstadoEventos = [
     ["2022", 660],
     ["2023", 1030],
   ];
+
+  export const dataOrganicers = [
+    {'name': 'roberto','amount': 45}, 
+    {'name': 'raul', 'amount': 33}, 
+    {'name': 'juieta', 'amount':20},
+    {'name': 'pedro', 'amount': 15},
+    {'name': 'emilia', 'amount': 10}
+]
   
 
 
@@ -26,16 +35,23 @@ export const EventsMetrics = (props) => {
    
     return (
             <>
-                <Grid container  display="flex" justifyContent="space-between" alignItems="center">
+                <Grid container  display="flex" justifyContent="space-between" alignItems="center" rowSpacing={3}>
+
                     
-                    <Grid xs={5.5}>
-                        <EventStatus
-                            data={dataEstadoEventos}
-                        />
-                    </Grid>
-                    <Grid xs={5.5}>
+                    <Grid item xs={6}>
                         <AcredditedMetrics
                             data={dataAcredidatos}
+                        />
+                    </Grid>
+                    <Grid item xs={5}>
+                        <TopOrganicers
+                            data={dataOrganicers}
+                        />
+
+                    </Grid>
+                    <Grid item xs={5.5}>
+                        <EventStatus
+                            data={dataEstadoEventos}
                         />
                     </Grid>
 

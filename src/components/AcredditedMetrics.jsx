@@ -37,7 +37,7 @@ export const options = {
             italic: false
           }
     },
-    width:500,
+    width:600,
     height:300,
   };
 
@@ -51,7 +51,7 @@ export const AcredditedMetrics = (props) => {
         <>
         <Grid container style={{background: "rgba(70, 78, 95, 0.35)"}} >
             <Grid item xs={12} style={{ display: "flex", justifyContent: "center" }}>
-                <Typography  variant="h4" align="center">
+                <Typography  variant="h4" align="center" fontWeight= 'bold'>
                     Cantidad de Acreditados
                 </Typography>
             </Grid>

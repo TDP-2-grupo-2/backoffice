@@ -19,7 +19,7 @@ export const EventStatus = (props) => {
         <>
         <Grid container style={{background: "rgba(70, 78, 95, 0.35)"}} >
             <Grid item xs={12} style={{ display: "flex", justifyContent: "center" }}>
-                <Typography  variant="h4" align="center">
+                <Typography  variant="h4" align="center" fontWeight= 'bold'>
                     Tipo de Eventos
                 </Typography>
             </Grid>
