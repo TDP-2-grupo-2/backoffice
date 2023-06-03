@@ -5,9 +5,10 @@ import { PieChart } from "./PieChart";
 export const options = {
     is3D: true,
     backgroundColor: 'transparent',
-    legend: {'position':'bottom','alignment':'center'},
+    legend: {'position':'bottom','alignment':'start', maxLines: 5},
     colors: ['#e0440e', '#e6693e', '#ec8f6e', '#f3b49f', '#f6c7b6'],
-    width:700,
+    chartArea: {top:50,bottom:30,right:0,left:50, 'width': '100%' },
+    width:550,
     height:300,
   };
 
