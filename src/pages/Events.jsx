@@ -1,7 +1,7 @@
 import React, { useState , useEffect} from "react"
 import { Typography ,  CircularProgress } from "@mui/material"
 import {TableView} from "../components/TableView"
-import { DateFilter } from "../components/DateFilter";
+import { RangeDateFilter } from "../components/RangeDateFilter";
 
 export const Events= () =>{
     let columns = ["Evento", "Descripcion", "Dueño", "Cantidad de Denuncias", "Motivo Principal", "Suspender Evento", "Suspender Organizador"];
@@ -69,7 +69,7 @@ export const Events= () =>{
             </Typography>
             <br></br>
             <br></br>
-            <DateFilter
+            <RangeDateFilter
                 dateFilter={dateFilter}
                 setDateFilter={setDateFilter}
             />
