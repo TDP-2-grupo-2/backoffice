@@ -64,7 +64,7 @@ export const Events= () =>{
     return (
       !loading ?
         <div className="reportedAttendes">
-            <Typography  variant="h3" align="top">
+            <Typography  variant="h3" align="left">
                 Eventos Denunciados
             </Typography>
             <br></br>
