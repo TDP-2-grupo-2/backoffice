@@ -5,14 +5,7 @@ import { AcredditedMetrics } from "./AcredditedMetrics";
 import { TopOrganicers } from "./TopOrganicers";
 import { AmountEvent } from "./AmountEvents";
 
-export const dataEstadoEventos = [
-    ["Tipo de Eventos", "Cantidad"],
-    ["Activos", 11],
-    ["Cancelados", 4],
-    ["Suspendidos", 3],
-    ["Borrador", 5],
-    ["Finalizados", 7],
-  ];
+
 
   export const dataAcredidatos = [
     ["Fecha", "Acreditaciones"],
@@ -41,7 +34,7 @@ export const dataTimeEvent = [
   
 
 
-export const EventsMetrics = (props) => {
+export const EventsMetrics = () => {
    
     return (
             <>
@@ -61,7 +54,6 @@ export const EventsMetrics = (props) => {
                     </Grid>
                     <Grid item xs={5}>
                         <EventStatus
-                            data={dataEstadoEventos}
                         />
                     </Grid>
                     <Grid item xs={6}>
