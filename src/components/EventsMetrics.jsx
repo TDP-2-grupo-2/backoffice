@@ -41,24 +41,25 @@ export const EventsMetrics = () => {
                 <Grid container  display="flex" justifyContent="space-between" alignItems="center" rowSpacing={3}>
 
                     
-                    <Grid item xs={7}>
+                    <Grid item xs={12}>
                         <AcredditedMetrics
                             data={dataAcredidatos}
                         />
                     </Grid>
-                    <Grid item xs={4}>
-                        <TopOrganicers
-                            data={dataOrganicers}
+                    <Grid item xs={12}>
+                    <AmountEvent
+                            data={dataTimeEvent}
                         />
+                        
 
                     </Grid>
-                    <Grid item xs={5}>
+                    <Grid item xs={5.5}>
                         <EventStatus
                         />
                     </Grid>
-                    <Grid item xs={6}>
-                        <AmountEvent
-                            data={dataTimeEvent}
+                    <Grid item xs={5.5}>
+                    <TopOrganicers
+                            data={dataOrganicers}
                         />
                     </Grid>
 

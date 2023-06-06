@@ -11,7 +11,7 @@ export const options = {
     is3D: true,
     backgroundColor: 'transparent',
     legend: {'position':'bottom','alignment':'center', maxLines: 5},
-    colors: ['#004242','#2F686F', '#63899E', '#5AB0C7', '#33A9C4', '#48E9F1'],
+    colors: ['#004242','#2F686F', '#63899E', '#5AB0C7', '#33A9C4'],
     chartArea: {'width': '45vw' },
     width:"45vw",
     height:"20vw",

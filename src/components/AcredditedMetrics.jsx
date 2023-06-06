@@ -37,7 +37,7 @@ export const options = {
             italic: false
           }
     },
-    width:"38vw",
+    width:"65vw",
     height:"20vw",
   };
 
@@ -46,7 +46,7 @@ export const options = {
 export const AcredditedMetrics = (props) => {
     console.log(props.data)
     const [statusInfo, setStatusInfo] = useState({'data': props.data, 'options': options, type:'ColumnChart'})
-    const [filters, setFilters] = useState({'since': null, 'type': "Años"})
+    const [filters, setFilters] = useState({'since': null, 'to': null, 'type': "Años"})
     return (
         <>
         <Grid container style={{background: "rgba(70, 78, 95, 0.35)"}}  justifyContent="space-evenly" alignItems="center">
@@ -55,12 +55,12 @@ export const AcredditedMetrics = (props) => {
                     Cantidad de Acreditados
                 </Typography>
             </Grid>
-            <Grid xs={8}>
+            <Grid xs={9}>
                 <MetricsChart
                     info={statusInfo}
                 />
             </Grid>
-            <Grid xs={3} >
+            <Grid xs={2} >
                 <FilterMetrics
                     filters={filters}
                     setFilters={setFilters}
