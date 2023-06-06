@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { Grid, Typography } from "@mui/material";
 import { MetricsChart } from "./MetricsChart";
 import { FilterMetrics } from "./FilterMetrics";
+import { NoDataInfo } from "./NoDataInfo";
 
 export const options = {
     is3D: true,
@@ -38,7 +39,7 @@ export const options = {
           }
       },
       width:"65vw",
-      height:"20vw",
+      height:"35vh",
   };
 
 
@@ -53,11 +54,18 @@ export const AmountEvent = (props) => {
                     Cantidad de Eventos
                 </Typography>
             </Grid>
-            <Grid item xs={9} style={{ display: "flex", justifyContent: "start" }}>
-                <MetricsChart
-                    info={statusInfo}
+            {statusInfo.data.length > 0 ?
+                <Grid item xs={10} style={{ display: "flex", justifyContent: "center" }}>
+                    <MetricsChart
+                        info={statusInfo}
+                    />
+                </Grid>
+            : <Grid item xs={10} style={{ display: "flex", justifyContent: "center" }}>
+                <NoDataInfo 
+                    message={"No hay eventos para el rango de fecha seleccionado"} 
                 />
             </Grid>
+            }
             <Grid xs={2} >
                 <FilterMetrics
                     filters={filters}

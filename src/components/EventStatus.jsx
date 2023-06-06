@@ -4,6 +4,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import dayjs from 'dayjs';
+import { NoDataInfo } from "./NoDataInfo";
 import { MetricsChart } from "./MetricsChart";
 
 
@@ -12,9 +13,9 @@ export const options = {
     backgroundColor: 'transparent',
     legend: {'position':'bottom','alignment':'center', maxLines: 5},
     colors: ['#004242','#2F686F', '#63899E', '#5AB0C7', '#33A9C4'],
-    chartArea: {'width': '45vw' },
-    width:"45vw",
-    height:"20vw",
+    chartArea: {'width': '40vw' },
+    width:"40vw",
+    height:"35vh",
     sliceVisibilityThreshold :0
   };
 
@@ -98,10 +99,10 @@ export const EventStatus = (props) => {
                     />
                 </Grid>
             : <Grid item xs={12} style={{ display: "flex", justifyContent: "center" }}>
-                <Typography  variant="h5" align="center" fontWeight= 'bold'>
-                    No hay eventos para la fecha dada
-                </Typography>
-            </Grid>
+                <NoDataInfo 
+                    message={"No hay eventos para el rango de fecha seleccionado"} 
+                />
+              </Grid>
             }
 
             
