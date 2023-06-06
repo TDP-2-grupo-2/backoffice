@@ -3,7 +3,7 @@ import { Grid, MenuItem, Select, Typography } from "@mui/material";
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-
+import dayjs from 'dayjs';
 
 
 
@@ -29,23 +29,39 @@ export const FilterMetrics = (props) => {
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DatePicker
                         label="Desde"
+                        fullWidth
                         value={props.filters.since}
+                        maxDate={props.filters.to || dayjs(Date.now())}
                         onChange={(event) => {onChangeFilter("since",event)}}
                     />
                 </LocalizationProvider>
             </Grid>
             <Grid item xs={12} style={{ display: "flex", justifyContent: "flex-start" }}>
-                <Select
-                    defaultValue={props.filters.type }
-                    onChange={(event) => {onChangeFilter("type",event.target.value)}}
-                    fullWidth
-                    label="Tipo"
-                    >
-                    <MenuItem value={"Años"}>Años</MenuItem>
-                    <MenuItem value={"Meses"}>Meses</MenuItem>
-                    <MenuItem value={"Semanas"}>Semanas</MenuItem>
-                </Select>
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <DatePicker
+                        label="Hasta"
+                        fullWidth
+                        minDate={props.filters.since}
+                        maxDate={dayjs(Date.now())}
+                        value={props.filters.to}
+                        onChange={(event) => {onChangeFilter("to",event)}}
+                    />
+                </LocalizationProvider>
             </Grid>
+            { props.filters.type !== "" &&
+                <Grid item xs={12} style={{ display: "flex", justifyContent: "flex-start" }}>
+                    <Select
+                        defaultValue={props.filters.type }
+                        onChange={(event) => {onChangeFilter("type",event.target.value)}}
+                        fullWidth
+                        label="Tipo"
+                        >
+                        <MenuItem value={"Años"}>Años</MenuItem>
+                        <MenuItem value={"Meses"}>Meses</MenuItem>
+                        <MenuItem value={"Dias"}>Dias</MenuItem>
+                    </Select>
+                </Grid>
+            }
 
         </Grid>
     )
