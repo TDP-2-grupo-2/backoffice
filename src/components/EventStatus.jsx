@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react"
 import { Grid, Typography } from "@mui/material";
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import dayjs from 'dayjs';
 import { MetricsChart } from "./MetricsChart";
+
 
 export const options = {
     is3D: true,
@@ -19,6 +24,7 @@ export const options = {
 
 export const EventStatus = (props) => {
     const [statusInfo, setStatusInfo] = useState({'data': [], 'options': options, type:'PieChart'})
+    const [dateFilter, setDateFilter] = useState(null)
 
     const APIURL = 'https://event-service-solfonte.cloud.okteto.net';
 
@@ -30,7 +36,13 @@ export const EventStatus = (props) => {
                 'Content-Type': 'application/json',
             }
         };
-        let url = `${APIURL}/admins/statistics/events/types`;
+        let url = ""
+        if (dateFilter !== null){
+            url = `${APIURL}/admins/statistics/events/types?from_date=${dateFilter}`
+            console.log(url)
+        }else{
+            url = `${APIURL}/admins/statistics/events/types`;
+        }
         const response = await fetch(
             url,
             paramsUpload
@@ -50,18 +62,34 @@ export const EventStatus = (props) => {
         }
 
     }
+    const onChangeDate = (event) => {
+        let new_Date = dayjs(new Date(event.toISOString()))
+        const month = new_Date.$M  +  1
+        console.log(new_Date.$y + "-" + month  + "-" + new_Date.$D)
+        setDateFilter(new_Date.$y + "-" + month  + "-" + new_Date.$D)
+    }
 
     useEffect( () => {
         getEventsStatusMetrics(localStorage.getItem('token'));
-      }, []);
+      }, [dateFilter]);
 
     return (
         <>
-        <Grid container style={{background: "rgba(70, 78, 95, 0.35)" , minHeight:"20vw"}} >
+        <Grid container style={{background: "rgba(70, 78, 95, 0.35)" , minHeight:"20vw"}} spacing={2} >
             <Grid item xs={12} style={{ display: "flex", justifyContent: "center" }}>
                 <Typography  variant="h4" align="center" fontWeight= 'bold'>
                     Estado de Eventos
                 </Typography>
+            </Grid>
+            <Grid item xs={12} style={{ display: "flex", justifyContent: "start" }}>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <DatePicker
+                        label="Desde"
+                        value={dateFilter}
+                        maxDate={dayjs(Date.now())}
+                        onChange={(event) => {onChangeDate(event)}}
+                    />
+                </LocalizationProvider>
             </Grid>
             {statusInfo.data.length > 0 ?
                 <Grid item xs={12} style={{ display: "flex", justifyContent: "center" }}>
