@@ -4,6 +4,7 @@ import noData from "../images/noData.png"
 
 
 export const NoDataInfo = (props) => {
+    console.log("No data Info")
     return(
         <Grid container alignItems="center">
             <Grid item xs={12} style={{ display: "flex", justifyContent: "center" }}>

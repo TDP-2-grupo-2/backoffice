@@ -10,8 +10,14 @@ import dayjs from 'dayjs';
 export const FilterMetrics = (props) => {
     console.log("estoy en filtro de metricas")
     const onChangeFilter = (change, value) => {
-        let filter = props.filters;
+        let filter = {...props.filters};
         console.log(value)
+        if (change === "since" || change === 'to'){
+            let new_Date = dayjs(new Date(value.toISOString()))
+            const month = new_Date.$M  +  1
+            value = new_Date.$y + "-" + month  + "-" + new_Date.$D
+            console.log(value)
+        }
         filter[change] = value
         props.setFilters(filter)
         console.log(props.filters)
@@ -31,7 +37,7 @@ export const FilterMetrics = (props) => {
                         label="Desde"
                         fullWidth
                         value={props.filters.since}
-                        maxDate={props.filters.to || dayjs(Date.now())}
+                        maxDate={dayjs(props.filters.to) || dayjs(Date.now())}
                         onChange={(event) => {onChangeFilter("since",event)}}
                     />
                 </LocalizationProvider>
@@ -41,7 +47,7 @@ export const FilterMetrics = (props) => {
                     <DatePicker
                         label="Hasta"
                         fullWidth
-                        minDate={props.filters.since}
+                        minDate={dayjs(props.filters.since)}
                         maxDate={dayjs(Date.now())}
                         value={props.filters.to}
                         onChange={(event) => {onChangeFilter("to",event)}}

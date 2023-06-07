@@ -20,9 +20,6 @@ export const options = {
   };
 
 
-
-
-
 export const EventStatus = (props) => {
     const [statusInfo, setStatusInfo] = useState({'data': [], 'options': options, type:'PieChart'})
     const [dateFilter, setDateFilter] = useState(null)
@@ -39,10 +36,10 @@ export const EventStatus = (props) => {
         };
         let url = ""
         if (dateFilter !== null){
-            url = `${APIURL}/admins/statistics/events/types?from_date=${dateFilter}`
+            url = `${APIURL}/admins/statistics/events/status?from_date=${dateFilter}`
             console.log(url)
         }else{
-            url = `${APIURL}/admins/statistics/events/types`;
+            url = `${APIURL}/admins/statistics/events/status`;
         }
         const response = await fetch(
             url,
@@ -54,8 +51,10 @@ export const EventStatus = (props) => {
             let evenstStatusAmount = jsonResponse['message']
             
             let info = Object.entries(evenstStatusAmount);
-            info.unshift( ["Tipo de Eventos", "Cantidad"])
-            console.log(info)
+            if (info.length > 0){
+                info.unshift( ["Tipo de Eventos", "Cantidad"])
+                console.log(info)
+            }
             setStatusInfo({...statusInfo, 
                             data: info, 
                          })
@@ -88,6 +87,7 @@ export const EventStatus = (props) => {
                         label="Desde"
                         value={dateFilter}
                         maxDate={dayjs(Date.now())}
+                        slotProps={{ textField: { helperText: 'Hasta el dia de la fecha' } }}
                         onChange={(event) => {onChangeDate(event)}}
                     />
                 </LocalizationProvider>
