@@ -43,7 +43,6 @@ export const EventsMetrics = () => {
                     
                     <Grid item xs={12}>
                         <AcredditedMetrics
-                            data={dataAcredidatos}
                         />
                     </Grid>
                     <Grid item xs={12}>
@@ -59,7 +58,6 @@ export const EventsMetrics = () => {
                     </Grid>
                     <Grid item xs={5.5}  style={{height: '50vh'}}>
                     <TopOrganicers
-                            data={dataOrganicers}
                         />
                     </Grid>
 

@@ -47,7 +47,7 @@ export const EventStatus = (props) => {
         );
         const jsonResponse = await response.json();
         if (response.status === 200){
-            console.log(jsonResponse)
+            //console.log(jsonResponse)
             let evenstStatusAmount = jsonResponse['message']
             
             let info = Object.entries(evenstStatusAmount);
@@ -58,7 +58,7 @@ export const EventStatus = (props) => {
             setStatusInfo({...statusInfo, 
                             data: info, 
                          })
-            console.log(statusInfo)
+            //console.log(statusInfo)
         }
 
     }
