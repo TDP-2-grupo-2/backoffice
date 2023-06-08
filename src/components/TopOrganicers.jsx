@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { Grid, Typography } from "@mui/material";
-
+import { NoDataInfo } from "./NoDataInfo";
 
 
 export const TopOrganicers = () => {
@@ -78,9 +78,10 @@ export const TopOrganicers = () => {
                 </>
             : 
             <Grid item xs={12}>
-                        <Typography  variant="h6" align="center">
-                        No hay organizadores con asistencia
-                        </Typography>
+                        <NoDataInfo 
+                    message={"No hay organizadores con eventos acreditados"} 
+                />
+              
             </Grid>
                 
         }
