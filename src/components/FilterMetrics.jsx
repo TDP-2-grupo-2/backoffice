@@ -62,9 +62,9 @@ export const FilterMetrics = (props) => {
                         fullWidth
                         label="Tipo"
                         >
-                        <MenuItem value={"Años"}>Años</MenuItem>
-                        <MenuItem value={"Meses"}>Meses</MenuItem>
-                        <MenuItem value={"Dias"}>Dias</MenuItem>
+                        <MenuItem value={"years"}>Años</MenuItem>
+                        <MenuItem value={"months"}>Meses</MenuItem>
+                        <MenuItem value={"days"}>Dias</MenuItem>
                     </Select>
                 </Grid>
             }
