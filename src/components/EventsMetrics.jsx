@@ -1,16 +1,11 @@
-import React, { useState } from "react"
-import { Box } from "@mui/material";
+import React from "react"
+import { Grid } from "@mui/material";
 import { EventStatus } from "./EventStatus";
 import { AcredditedMetrics } from "./AcredditedMetrics";
+import { TopOrganicers } from "./TopOrganicers";
+import { AmountEvent } from "./AmountEvents";
 
-export const dataEstadoEventos = [
-    ["Tipo de Eventos", "Cantidad"],
-    ["Activos", 11],
-    ["Cancelados", 4],
-    ["Suspendidos", 3],
-    ["Borrador", 5],
-    ["Finalizados", 7],
-  ];
+
 
   export const dataAcredidatos = [
     ["Fecha", "Acreditaciones"],
@@ -19,23 +14,55 @@ export const dataEstadoEventos = [
     ["2022", 660],
     ["2023", 1030],
   ];
+
+  export const dataOrganicers = [
+    {'name': 'roberto','amount': 45}, 
+    {'name': 'raul', 'amount': 33}, 
+    {'name': 'juieta', 'amount':20},
+    {'name': 'pedro', 'amount': 15},
+    {'name': 'emilia', 'amount': 10}
+]
+
+export const dataTimeEvent = [
+    ["Tiempo", "Cantidad de Eventos"],
+    ["Abr", 10],
+    ["May", 5],
+    ['Jun', 1],
+    ['Jul', 8],
+    ["Ago", 3]
+]
   
 
 
-export const EventsMetrics = (props) => {
+export const EventsMetrics = () => {
    
     return (
             <>
-                <Box display="flex" justifyContent="space-between" alignItems="center">
-                    <EventStatus
-                        data={dataEstadoEventos}
-                    />
+                <Grid container  display="flex" justifyContent="space-between" alignItems="center" rowSpacing={6}>
 
-                    <AcredditedMetrics
-                        data={dataAcredidatos}
-                    />
+                    
+                    <Grid item xs={12}>
+                        <AcredditedMetrics
+                        />
+                    </Grid>
+                    <Grid item xs={12}>
+                    <AmountEvent
+                            data={dataTimeEvent}
+                        />
+                        
 
-                </Box>
+                    </Grid>
+                    <Grid item xs={5.5}  style={{height: '50vh'}}>
+                        <EventStatus
+                        />
+                    </Grid>
+                    <Grid item xs={5.5}  style={{height: '50vh'}}>
+                    <TopOrganicers
+                        />
+                    </Grid>
+
+
+                </Grid>
 
             </>
     );

@@ -162,8 +162,8 @@ export const Sidebar = () => {
                         <NavItem>
 
                             <Button variant="text" key={index} className="link" onClick={(item) => {handlePage(index, item)}} style={{textTransform: 'none'}}>
-                                <div className="icon" >{item.icon}</div>
-                                <div style={{display: isOpen ? "block" : "none", color: sidebarFontColor}} className="link_text">{item.name}</div>
+                                <div style={{fontSize:"30px"}} className="icon"  >{item.icon}</div>
+                                <div style={{display: isOpen ? "block" : "none", color: sidebarFontColor ,fontSize: '20px' }} className="link_text">{item.name}</div>
                             </Button>
                             
                         </NavItem>

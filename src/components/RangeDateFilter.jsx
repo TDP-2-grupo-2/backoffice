@@ -9,7 +9,7 @@ import dayjs, { Dayjs } from 'dayjs';
 
 
 
-export const DateFilter = (props) => {
+export const RangeDateFilter = (props) => {
 
     console.log(props)
     const handleFrom = (event) => {
