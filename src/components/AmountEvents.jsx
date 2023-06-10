@@ -39,7 +39,7 @@ export const options = {
           }
       },
       width:"65vw",
-      height:"35vh",
+      height:"40vh",
   };
 
   const APIURL = 'https://event-service-solfonte.cloud.okteto.net';
@@ -72,7 +72,7 @@ export const AmountEvent = () => {
     const [filters, setFilters] = useState({'since': null, 'to': null , 'type': ""})
 
     async function getAmountEventsMetrics(token){
-        console.log("busco eventos")
+        console.log("busco cantidad de eventos")
         const paramsUpload = {
             method: "GET",
             headers: {
@@ -91,6 +91,7 @@ export const AmountEvent = () => {
         if (response.status === 200){
             console.log(jsonResponse)
             let evenstAmount = jsonResponse['message'];
+            console.log(evenstAmount)
             let info = [];
             evenstAmount.forEach(element => info.push([element.dateOfCreation, element.amount_of_events]));
             if (info.length > 0){

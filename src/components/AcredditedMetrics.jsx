@@ -40,7 +40,7 @@ export const options = {
           }
     },
     width:"65vw",
-    height:"35vh",
+    height:"40vh",
   };
 
   const APIURL = 'https://event-service-solfonte.cloud.okteto.net';
