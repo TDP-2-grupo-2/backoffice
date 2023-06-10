@@ -52,6 +52,7 @@ export const EventStatus = (props) => {
             
             let info = Object.entries(evenstStatusAmount);
             if (info.length > 0){
+                info.splice(4, 1);
                 info.unshift( ["Tipo de Eventos", "Cantidad"])
                 console.log(info)
             }
