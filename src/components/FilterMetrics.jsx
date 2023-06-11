@@ -57,7 +57,8 @@ export const FilterMetrics = (props) => {
             { props.filters.type !== "" &&
                 <Grid item xs={12} style={{ display: "flex", justifyContent: "flex-start" }}>
                     <Select
-                        defaultValue={props.filters.type }
+                        
+                        value={props.filters.type ? props.filters.type : "months"}
                         onChange={(event) => {onChangeFilter("type",event.target.value)}}
                         fullWidth
                         label="Tipo"

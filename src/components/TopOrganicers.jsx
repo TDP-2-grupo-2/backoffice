@@ -54,7 +54,7 @@ export const TopOrganicers = () => {
                     </Grid>
                     <Grid item xs={6}>
                         <Typography  variant="h5" align="center" fontWeight= 'bold'>
-                            Asistencia a Eventos
+                            Asistencia a Eventos(%)
                         </Typography>
                     </Grid>
                     

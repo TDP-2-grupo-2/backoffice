@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Grid, Typography } from "@mui/material";
 import { MetricsChart } from "./MetricsChart";
 import { FilterMetrics } from "./FilterMetrics";
@@ -39,13 +39,75 @@ export const options = {
           }
       },
       width:"65vw",
-      height:"35vh",
+      height:"40vh",
   };
 
+  const APIURL = 'https://event-service-solfonte.cloud.okteto.net';
 
-export const AmountEvent = (props) => {
-    const [statusInfo, setStatusInfo] = useState({'data': props.data, 'options': options, type:'LineChart'})
+  function get_url(filters){
+    console.log("vuelvo a hacer el request")
+    let url = ""
+    if (filters.since !== null && filters.to !== null){
+        console.log("cambio since y to")
+        url = `${APIURL}/admins/statistics/events/amount?from_date=${filters.since}&to_date=${filters.to}`
+        console.log(url)
+    }
+    else if (filters.since !== null){
+        console.log("cambio since ")
+        url = `${APIURL}/admins/statistics/events/amount?from_date=${filters.since}`
+        console.log(url)
+    } else if (filters.to !== null){
+        console.log("cambio to")
+        url = `${APIURL}/admins/statistics/events/amount?to_date=${filters.to}`
+        console.log(url)
+    }else{
+        url = `${APIURL}/admins/statistics/events/amount`;
+    }
+    return url
+  }
+
+
+export const AmountEvent = () => {
+    const [statusInfo, setStatusInfo] = useState({'data': [], 'options': options, type:'LineChart'})
     const [filters, setFilters] = useState({'since': null, 'to': null , 'type': ""})
+
+    async function getAmountEventsMetrics(token){
+        console.log("busco cantidad de eventos")
+        const paramsUpload = {
+            method: "GET",
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            }
+        };
+        let url = get_url(filters)
+        
+        const response = await fetch(
+            url,
+            paramsUpload
+        );
+        const jsonResponse = await response.json();
+        console.log(jsonResponse)
+        if (response.status === 200){
+            console.log(jsonResponse)
+            let evenstAmount = jsonResponse['message'];
+            console.log(evenstAmount)
+            let info = [];
+            evenstAmount.forEach(element => info.push([element.dateOfCreation, element.amount_of_events]));
+            if (info.length > 0){
+                info.unshift( ["Fecha", "Cantidad"])
+                console.log(info)
+            }
+            setStatusInfo({...statusInfo, 
+                            data: info, 
+                         })
+            console.log(statusInfo)
+        }
+    }
+    useEffect( () => {
+        getAmountEventsMetrics(localStorage.getItem('token'));
+    }, [filters]);
+
     return (
         <>
         <Grid container style={{background: "rgba(70, 78, 95, 0.35)"}}  justifyContent="space-evenly" alignItems="center" >

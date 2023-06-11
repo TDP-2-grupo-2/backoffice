@@ -7,30 +7,7 @@ import { AmountEvent } from "./AmountEvents";
 
 
 
-  export const dataAcredidatos = [
-    ["Fecha", "Acreditaciones"],
-    ["2020", 1000],
-    ["2021", 1170],
-    ["2022", 660],
-    ["2023", 1030],
-  ];
 
-  export const dataOrganicers = [
-    {'name': 'roberto','amount': 45}, 
-    {'name': 'raul', 'amount': 33}, 
-    {'name': 'juieta', 'amount':20},
-    {'name': 'pedro', 'amount': 15},
-    {'name': 'emilia', 'amount': 10}
-]
-
-export const dataTimeEvent = [
-    ["Tiempo", "Cantidad de Eventos"],
-    ["Abr", 10],
-    ["May", 5],
-    ['Jun', 1],
-    ['Jul', 8],
-    ["Ago", 3]
-]
   
 
 
@@ -47,7 +24,7 @@ export const EventsMetrics = () => {
                     </Grid>
                     <Grid item xs={12}>
                     <AmountEvent
-                            data={dataTimeEvent}
+                           
                         />
                         
 
