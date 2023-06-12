@@ -10,7 +10,7 @@ export const options = {
     legend: {'position':'bottom','alignment':'center'},
     colors: ['#64B5F6'],
     hAxis: {
-        title: "Año",
+        title: "Meses",
         textStyle: {
             fontSize: 15,
             color: '#000000',
@@ -45,7 +45,7 @@ export const options = {
 
   const APIURL = 'https://event-service-solfonte.cloud.okteto.net';
 
-
+  const type_of_filter = {"months": "Meses", "years": "Años", "days": "Dias"}
   function get_url(filters) {
     console.log("vuelvo a hacer el request")
     let url = ""
@@ -102,7 +102,9 @@ export const AcredditedMetrics = () => {
                 info.unshift( ["Fecha", "Acreditaciones"])
                 console.log(info)
             }
+            options['hAxis']['title'] = type_of_filter[filters['type']]
             setStatusInfo({...statusInfo, 
+                            options: options,
                             data: info, 
                          })
             console.log(statusInfo)
