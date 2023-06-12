@@ -22,7 +22,7 @@ export const Metrics = () =>{
     return (
         <>
             <Typography  variant="h3" align="left">
-                Metricas
+                Métricas
             </Typography>
             <Box sx={{ width: '100%' }}>
                 <TabHeader 

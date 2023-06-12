@@ -133,7 +133,7 @@ export const ReportsMetrics = (props) => {
                     setMotivo(event.target.value)
                 }}
                 >
-                <MenuItem value={'category'}>Categoria</MenuItem>
+                <MenuItem value={'category'}>Categoría</MenuItem>
                 <MenuItem value={'denuncia'}>Denuncia</MenuItem>
                 </Select>
                 </FormControl>
@@ -172,7 +172,7 @@ export const ReportsMetrics = (props) => {
         
         {reports.length > 0?
             <Grid item xs={12} spacing={2}  >
-                {reports.map(evento => <ReportCard key={evento.eventId} titleLabel={motivo == 'category'? 'Tipo de categoria: ':'Tipo de denuncia: '} bodyLabel={motivo == 'category'? 'Principal motivo de denuncia por ':'Principal evento denunciado por '} report = {evento}> </ReportCard>)}
+                {reports.map(evento => <ReportCard key={evento.eventId} titleLabel={motivo == 'category'? 'Tipo de categoría: ':'Tipo de denuncia: '} bodyLabel={motivo == 'category'? 'Principal motivo de denuncia por ':'Principal evento denunciado por '} report = {evento}> </ReportCard>)}
             </Grid>
             :
             <Grid item xs={12} spacing={2}  >
