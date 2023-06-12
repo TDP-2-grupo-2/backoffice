@@ -51,11 +51,15 @@ export const EventStatus = (props) => {
             let evenstStatusAmount = jsonResponse['message']
             
             let info = Object.entries(evenstStatusAmount);
+            
+            console.log("ANTESS")
+            console.log(info)
             if (info.length > 0){
                 console.log("ESTOY ACAAA")
                 console.log(info[0][0])
-                info[0][0] = 'finalizado'
-                info.splice(4, 1);
+                //info[0][0] = 'finalizado'
+               
+                //info.splice(4, 1);
                 info.unshift( ["Tipo de Eventos", "Cantidad"])
                 console.log(info)
             }
