@@ -52,6 +52,9 @@ export const EventStatus = (props) => {
             
             let info = Object.entries(evenstStatusAmount);
             if (info.length > 0){
+                console.log("ESTOY ACAAA")
+                console.log(info[0][0])
+                info[0][0] = 'finalizado'
                 info.splice(4, 1);
                 info.unshift( ["Tipo de Eventos", "Cantidad"])
                 console.log(info)
@@ -59,7 +62,7 @@ export const EventStatus = (props) => {
             setStatusInfo({...statusInfo, 
                             data: info, 
                          })
-            //console.log(statusInfo)
+            console.log(statusInfo)
         }
 
     }
