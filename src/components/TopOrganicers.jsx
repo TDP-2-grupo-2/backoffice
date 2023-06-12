@@ -68,7 +68,7 @@ export const TopOrganicers = () => {
                                 </Grid>
                                 <Grid item xs={6}>
                                     <Typography  variant="h6" align="center" color="#FFFFFF">
-                                        {organizer.coeficient.toFixed(2)}
+                                        {organizer.coeficient.toFixed(3)}
                                     </Typography>
                                 </Grid>
                          </>
