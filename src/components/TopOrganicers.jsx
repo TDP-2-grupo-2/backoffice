@@ -38,7 +38,7 @@ export const TopOrganicers = () => {
       }, []);
 
     return (
-        <Grid container style={{background: "rgba(70, 78, 95, 0.35)"}} rowSpacing={2}>
+        <Grid container style={{background: "rgba(70, 78, 95, 0.35)", borderRadius:15, padding:15, height:'545px'}} rowSpacing={2}>
             <Grid item style={{ display: "flex", justifyContent: "center" }} xs={12}>
                 <Typography  variant="h4" align="center" fontWeight= 'bold'>
                     Top Organizadores
@@ -72,9 +72,9 @@ export const TopOrganicers = () => {
                                     </Typography>
                                 </Grid>
                          </>
-                        );
+                        )
                     })
-                };
+                }
                 </>
             : 
             <Grid item xs={12}>

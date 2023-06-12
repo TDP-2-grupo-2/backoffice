@@ -76,7 +76,7 @@ export const EventStatus = (props) => {
 
     return (
         <>
-        <Grid container style={{background: "rgba(70, 78, 95, 0.35)" , minHeight:"20vw"}} spacing={2} >
+        <Grid container style={{background: "rgba(70, 78, 95, 0.35)" , minHeight:"20vw", borderRadius:15, padding:15,height:'545px'}} spacing={2} >
             <Grid item xs={12} style={{ display: "flex", justifyContent: "center" }}>
                 <Typography  variant="h4" align="center" fontWeight= 'bold'>
                     Estado de Eventos

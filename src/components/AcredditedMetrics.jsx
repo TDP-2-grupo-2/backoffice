@@ -115,7 +115,7 @@ export const AcredditedMetrics = () => {
       }, [filters]);
     return (
         <>
-        <Grid container style={{background: "rgba(70, 78, 95, 0.35)"}}  justifyContent="center" alignItems="center">
+        <Grid container style={{background: "rgba(70, 78, 95, 0.35)", borderRadius:15, padding:15}}  justifyContent="center" alignItems="center">
             <Grid item xs={12} style={{ display: "flex", justifyContent: "center" }} >
                 <Typography  variant="h4" align="center" fontWeight= 'bold'>
                     Cantidad de Acreditados

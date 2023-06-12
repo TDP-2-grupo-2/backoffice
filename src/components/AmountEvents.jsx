@@ -110,7 +110,7 @@ export const AmountEvent = () => {
 
     return (
         <>
-        <Grid container style={{background: "rgba(70, 78, 95, 0.35)"}}  justifyContent="space-evenly" alignItems="center" >
+        <Grid container style={{background: "rgba(70, 78, 95, 0.35)", borderRadius:15, padding:15}}  justifyContent="space-evenly" alignItems="center" >
             <Grid item xs={12} style={{ display: "flex", justifyContent: "center" }}>
                 <Typography  variant="h4" align="center" fontWeight= 'bold'>
                     Cantidad de Eventos
@@ -133,7 +133,6 @@ export const AmountEvent = () => {
                     filters={filters}
                     setFilters={setFilters}
                 />
-
             </Grid>
 
             

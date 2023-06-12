@@ -15,7 +15,7 @@ export const EventsMetrics = () => {
    
     return (
             <>
-                <Grid container  display="flex" justifyContent="space-between" alignItems="center" rowSpacing={6}>
+                <Grid container display="flex" justifyContent="space-between" alignItems="center" rowSpacing={4} style={{marginBottom:20}}>
 
                     
                     <Grid item xs={12}>
@@ -29,14 +29,20 @@ export const EventsMetrics = () => {
                         
 
                     </Grid>
-                    <Grid item xs={5.5}  style={{height: '50vh'}}>
+                    <Grid item xs={12} >
+                    <Grid container xs= {12}  justifyContent="space-between" alignItems="center" >
+                    <Grid item xs={5.5} >
                         <EventStatus
                         />
                     </Grid>
-                    <Grid item xs={5.5}  style={{height: '50vh'}}>
+                    <Grid item xs={5.5}  style={{height: '100%'}}>
                     <TopOrganicers
                         />
                     </Grid>
+                    </Grid>
+                    </Grid>
+                    
+                    
 
 
                 </Grid>
