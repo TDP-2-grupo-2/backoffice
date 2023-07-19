@@ -11,7 +11,7 @@ export const Login = (props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
-    const [notify, setNotify] = useState({isOpen: false, message: '', type: ''})
+    const [notify, setNotify] = useState({isOpen: false, message: '', type: 'info'})
  
 
     const handleLogIn = async (event) => {
@@ -37,7 +37,7 @@ export const Login = (props) => {
             props.setAuthentification(true)
             localStorage.setItem("token", jsonResponse['message'])
         } else {
-            if (response.status == 401){
+            if (response.status === 401){
                 setNotify({
                     isOpen: true,
                     message: jsonResponse['detail'],
@@ -88,12 +88,12 @@ export const Login = (props) => {
  
                     </Grid>
                     <Grid item xs={12} style={{ display: "flex", justifyContent: "center" }}>
-                        <Typography  variant="h3" align="top">
+                        <Typography  variant="h3" align="center">
                             Administradores
                         </Typography>
                     </Grid>
                     <Grid item xs={12} style={{ display: "flex", justifyContent: "center" }}>
-                        <Typography  variant="h3" align="top">
+                        <Typography  variant="h3" align="center">
                             Bienvenido
                         </Typography>
                     </Grid>

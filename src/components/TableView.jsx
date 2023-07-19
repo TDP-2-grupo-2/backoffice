@@ -5,8 +5,8 @@ import { Notification } from './Notification';
 
 export const TableView = (props) => {
     
-    const [notifyBlockEvent, setNotifyBlockEvent] = useState({isOpen: false, message: '', type: ''})
-    const [notifyBlockOrganizer, setNotifyBlockOrganizer] = useState({isOpen: false, message: '', type: ''})
+    const [notifyBlockEvent, setNotifyBlockEvent] = useState({isOpen: false, message: '', type: 'info'})
+    const [notifyBlockOrganizer, setNotifyBlockOrganizer] = useState({isOpen: false, message: '', type: 'info'})
     const APIURL = 'https://event-service-solfonte.cloud.okteto.net'
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
@@ -48,8 +48,38 @@ export const TableView = (props) => {
             setNotifyBlockOrganizer({isOpen: true, message: 'Ha ocurrido un error al bloquear un organizador', type: 'error'})
         }     
     }
+    const sendNotifications = async (row) => {
+        console.log("entre a send notifications")
+        const paramsUpload = {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                message: "Se ha cancelado el evento.",
+                modifications: {"status": "suspended"},
+                event_id: row.event_id,
+                event_name: row.event_name
+            })
+        };
+        const url = 'https://notifications-service-agustinaa235.cloud.okteto.net/notifications/modifications';
+        const response = await fetch(
+            url,
+            paramsUpload
+        );
+        const jsonResponse = await response.json();
+        console.log(response.status);
+        if (response.status === 201){
+            console.log(jsonResponse.status_code)
+            if(!jsonResponse.status_code){
+                console.log("se enviaron todos los mensajes")
 
-    const handleBlockEvent = async (eventId) => {
+            }
+        }
+        return response.status
+    }
+
+    const handleBlockEvent = async (row) => {
         let token = localStorage.getItem('token');
         const paramsUpload = {
             method: "PATCH",
@@ -58,15 +88,16 @@ export const TableView = (props) => {
                 'Content-Type': 'application/json',
             }
         };
-        console.log(eventId)
-        const url = `${APIURL}/admins/suspended_events/${eventId}`;
+        console.log(row.event_id)
+        const url = `${APIURL}/admins/suspended_events/${row.event_id}?motive=${row.most_frecuent_reason}`;
         const response = await fetch(
             url,
             paramsUpload
         );
         const jsonResponse = await response.json();
-    
-        if (response.status === 200){
+        let sendNoty = await sendNotifications(row);
+        console.log(sendNoty);
+        if (response.status === 200 && sendNoty === 201){
             if(!jsonResponse.status_code){
                 console.log(jsonResponse)
                 setNotifyBlockEvent({isOpen: true, message: 'El evento ha sido bloqueado exitosamente', type: 'success'})
@@ -109,12 +140,12 @@ export const TableView = (props) => {
                                 </>
                                 
                         )})}
-                        {props.isEvent == true &&
+                        {props.isEvent === true &&
                             <>
                                 <TableCell>
                                     <Button sx={{ color: 'white', backgroundColor: 'rgba(129, 174, 181, 1)'}}
                                             variant="contained" 
-                                            onClick={() => handleBlockEvent(row.event_id)}>
+                                            onClick={() => handleBlockEvent(row)}>
                                                 Bloquear
                                     </Button>
                                 </TableCell>
